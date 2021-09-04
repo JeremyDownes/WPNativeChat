@@ -1,0 +1,15 @@
+/**
+ * All of the CSS for your admin-specific functionality should be
+ * included in this file.
+ */
+
+ #cmi-wp-native-chat-position-container {
+ 	display: flex;
+ 	flex-wrap: wrap;
+ 	max-width: 500px;
+ }
+
+
+ #cmi-wp-native-chat-position-container div {
+ 	width: 33%;
+ }
