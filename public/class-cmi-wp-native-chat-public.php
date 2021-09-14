@@ -103,11 +103,12 @@ class Cmi_Wp_Native_Chat_Public {
   	if( isset($options['phone_verified']) && isset($options['email_verified']) && $options['phone_verified'] == 'verified' && $options['email_verified'] == 'verified' ) {
   		if( $start_time && strtotime(current_time('mysql')) < strtotime($start_time) ) { return; }
   		if( $end_time && strtotime(current_time('mysql')) > strtotime($end_time) ) { return;  }
-  		echo '<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js" integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous"></script>';
 			$ajax_url = admin_url( 'admin-ajax.php' );
  			$user_id = get_user_by('login', 'CMI_WP_Native_Chat')->ID;
+ 			wp_register_script( 'cryptography', plugin_dir_url( __FILE__ ) . 'js/crypto.js', array(), $this->version, false );
  			wp_register_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/cmi-wp-native-chat-public.js', array( 'jquery' ), $this->version, false );
 			wp_enqueue_script( $this->plugin_name);
+			wp_enqueue_script( 'cryptography');
 			wp_localize_script( $this->plugin_name, 'cmi_wp_native_chat_ajax_object', 
 		  	array( 
 		  	'rest_uri' => site_url('wp-json/wp/v2/conversation/'),
