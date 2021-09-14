@@ -40,7 +40,7 @@ $admin_name = isset( get_post_meta( get_the_ID() )['admin_name']['0'] ) ? get_po
 
 if (isset($_POST['admin_name'])) {
   if(!isset(get_post_meta(get_the_ID())['admin_name'])) {
-    update_post_meta(get_the_ID(), 'admin_name', $_POST['admin_name']); 
+    update_post_meta(get_the_ID(), 'admin_name', sanitize_user($_POST['admin_name'])); 
   }
 }
 

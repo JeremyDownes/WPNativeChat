@@ -47,7 +47,7 @@ function cmi_wp_native_chat_bg_color() {
     if ( $options['bg_color'] != '' ) { $bg_color =   esc_attr( $options['bg_color'] ); }
   } 
 
-  echo "<input id='cmi_wp_native_chat_bg_color' name='cmi_wp_native_chat_plugin_options[bg_color]' type='color' value='" . $bg_color . "' />";
+  echo "<input id='cmi_wp_native_chat_bg_color' name='cmi_wp_native_chat_plugin_options[bg_color]' type='color' value='" . esc_attr($bg_color) . "' />";
 }
 
 function cmi_wp_native_chat_border_radius() {
@@ -522,6 +522,19 @@ function cmi_wp_native_chat_button_bg_color_hover() {
   echo "<input id='cmi_wp_native_chat_button_bg_color_hover' name='cmi_wp_native_chat_plugin_options[button_bg_color_hover]' type='color' value='" . $button_bg_color_hover . "' />";
 }
 
+function cmi_wp_native_chat_validate_network_input($net)
+{
+  $networks = array (
+    'txt.att.net',
+    'tmomail.net',
+    'messaging.sprintpcs.com',
+    'vtext.com',
+    'vzwpix.com',
+    'vmobl.com'
+  );
+  return in_array($net, $networks);
+}
+
 
 function cmi_wp_native_chat_primary_phone() {
 	$readonly = '';
@@ -530,7 +543,9 @@ function cmi_wp_native_chat_primary_phone() {
   $options = get_option( 'cmi_wp_native_chat_plugin_options' );
 
   if (isset($_GET['network'])) {
-  	$primary_phone = sanitize_key($_GET['network']);
+  	$preformatted = sanitize_text_field($_GET['network']);
+    $preformatted = explode('@', $preformatted);
+    if(!cmi_wp_native_chat_validate_network_input($preformatted['1'])) { return; }
   	$readonly = 'readonly'; 
   	$primary_phone_button = "<button id='cmi-wp-native-chat-change-phone-button'>Verified Please Save</button>";
 	}
