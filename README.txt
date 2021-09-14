@@ -52,7 +52,14 @@ https://github.com/JeremyDownes/WPNativeChat or contact jeremydownes@hotmail.com
 
 
 == Frequently Asked Questions ==
+= Why doesn't the chat work =
 
+The chat will not initiate from a logged in browser. Open a different browser or private tab to test functionality
+
+= Why do I see a blank screen when responding to chats =
+
+You likely are not logged in to the site on your device. It's probably a good idea to check Keep Me Signed In when you log into Wordpress
+from the device you intend to use to administer chat requests.
 
 == Screenshots ==
 
