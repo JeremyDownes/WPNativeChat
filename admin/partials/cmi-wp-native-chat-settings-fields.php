@@ -22,21 +22,21 @@ function cmi_wp_native_chat_start_image() {
   //echo "<input id='cmi_wp_native_chat_start_image' name='cmi_wp_native_chat_plugin_options[start_image]' type='text' value='" . $start_image . "' />";
   ?>
       <input type="hidden"  name='cmi_wp_native_chat_plugin_options[start_image]' id="cmi_wp_native_chat_image_id" value="<?php echo esc_attr( $start_image ); ?>" class="regular-text" />
-      <?php echo $image; ?><input type='button' value="<?php esc_attr_e( 'Select an image', 'mytextdomain' ); ?>" id="cmi_wp_native_chat_media_manager"/><br><br>
+      <?php echo wp_kses_post($image); ?><input type='button' value="<?php esc_attr_e( 'Select an image', 'mytextdomain' ); ?>" id="cmi_wp_native_chat_media_manager"/><br><br>
 <?php
 }
 
-function cmi_wp_native_chat_add_css() {
-	$add_css = '';
-  $options = get_option( 'cmi_wp_native_chat_plugin_options' );
+// function cmi_wp_native_chat_add_css() {
+// 	$add_css = '';
+//   $options = get_option( 'cmi_wp_native_chat_plugin_options' );
 
-  if ( isset($options['add_css']) ) {
-  	if ( $options['add_css'] != '' ) { $add_css = 	esc_attr( $options['add_css'] ); }
+//   if ( isset($options['add_css']) ) {
+//   	if ( $options['add_css'] != '' ) { $add_css = 	esc_attr( $options['add_css'] ); }
 
 
-  } 
-  echo "<input id='cmi_wp_native_chat_add_css' name='cmi_wp_native_chat_plugin_options[add_css]' type='text' value='" . $add_css . "' />";
-}
+//   } 
+//   echo "<input id='cmi_wp_native_chat_add_css' name='cmi_wp_native_chat_plugin_options[add_css]' type='text' value='" . esc_attr($add_css) . "' />";
+// }
 
 function cmi_wp_native_chat_bg_color() {
 
@@ -58,7 +58,7 @@ function cmi_wp_native_chat_border_radius() {
   if ( isset($options['border_radius']) ) {
     if ( $options['border_radius'] != '' ) { $border_radius =   esc_attr( $options['border_radius'] ); }
   } 
-  echo "<input id='cmi_wp_native_chat_border_radius' name='cmi_wp_native_chat_plugin_options[border_radius]' type='text' value='" . $border_radius . "' />";
+  echo "<input id='cmi_wp_native_chat_border_radius' name='cmi_wp_native_chat_plugin_options[border_radius]' type='text' value='" . esc_attr($border_radius) . "' />";
 }
 
 function cmi_wp_native_chat_disable_chat() {
@@ -68,7 +68,7 @@ function cmi_wp_native_chat_disable_chat() {
   if ( isset($options['disable_chat']) ) {
     if ( $options['disable_chat'] == 'checked' ) { $disable_chat =   'checked'; }
   } 
-  echo "<input id='cmi_wp_native_disable_chat' name='cmi_wp_native_chat_plugin_options[disable_chat]' type='checkbox' value='checked' ".$disable_chat."/>";
+  echo "<input id='cmi_wp_native_disable_chat' name='cmi_wp_native_chat_plugin_options[disable_chat]' type='checkbox' value='checked' ".esc_attr($disable_chat)."/>";
 }
 
 function cmi_wp_native_chat_end_time() {
@@ -78,7 +78,7 @@ function cmi_wp_native_chat_end_time() {
   if ( isset($options['end_time']) ) {
   	if ( $options['end_time'] != '' ) { $end_time = 	esc_attr( $options['end_time'] ); }
   } 
-  echo "<input id='cmi_wp_native_chat_end_time' name='cmi_wp_native_chat_plugin_options[end_time]' type='time' value='" . $end_time . "' />";
+  echo "<input id='cmi_wp_native_chat_end_time' name='cmi_wp_native_chat_plugin_options[end_time]' type='time' value='" . esc_attr($end_time) . "' />";
 }
 
 
@@ -89,7 +89,7 @@ function cmi_wp_native_chat_size() {
   if ( isset($options['size']) ) {
     if ( $options['size'] != '' ) { $size =   esc_attr( $options['size'] ); }
   } 
-  echo "<input id='cmi_wp_native_chat_size' name='cmi_wp_native_chat_plugin_options[size]' type='range' min='50' max='100' value='" . $size . "' />";
+  echo "<input id='cmi_wp_native_chat_size' name='cmi_wp_native_chat_plugin_options[size]' type='range' min='50' max='100' value='" . esc_attr($size) . "' />";
 }
 
 function cmi_wp_native_chat_size_mobile() {
@@ -99,7 +99,7 @@ function cmi_wp_native_chat_size_mobile() {
   if ( isset($options['size_mobile']) ) {
     if ( $options['size_mobile'] != '' ) { $size_mobile =   esc_attr( $options['size_mobile'] ); }
   } 
-  echo "<input id='cmi_wp_native_chat_size_mobile' name='cmi_wp_native_chat_plugin_options[size_mobile]' type='range' min='50' max='100' value='" . $size_mobile . "' />";
+  echo "<input id='cmi_wp_native_chat_size_mobile' name='cmi_wp_native_chat_plugin_options[size_mobile]' type='range' min='50' max='100' value='" . esc_attr($size_mobile) . "' />";
 }
 
 
@@ -110,7 +110,7 @@ function cmi_wp_native_chat_start_image_size() {
   if ( isset($options['start_image_size']) ) {
     if ( $options['start_image_size'] != '' ) { $start_image_size =   esc_attr( $options['start_image_size'] ); }
   } 
-  echo "<input id='cmi_wp_native_chat_start_image_size' name='cmi_wp_native_chat_plugin_options[start_image_size]' type='range' min='1' max='100' value='" . $start_image_size . "' />";
+  echo "<input id='cmi_wp_native_chat_start_image_size' name='cmi_wp_native_chat_plugin_options[start_image_size]' type='range' min='1' max='100' value='" . esc_attr($start_image_size) . "' />";
 }
 
 function cmi_wp_native_chat_start_time() {
@@ -120,7 +120,7 @@ function cmi_wp_native_chat_start_time() {
   if ( isset($options['start_time']) ) {
   	if ( $options['start_time'] != '' ) { $start_time = 	esc_attr( $options['start_time'] ); }
   } 
-  echo "<input id='cmi_wp_native_chat_start_time' name='cmi_wp_native_chat_plugin_options[start_time]' type='time' value='" . $start_time . "' />";
+  echo "<input id='cmi_wp_native_chat_start_time' name='cmi_wp_native_chat_plugin_options[start_time]' type='time' value='" . esc_attr($start_time) . "' />";
 }
 
 
@@ -131,7 +131,7 @@ function cmi_wp_native_chat_timeout() {
   if ( isset($options['timeout']) ) {
     if ( $options['timeout'] != '' ) { $timeout =   esc_attr( $options['timeout'] ); }
   } 
-  echo "<input id='cmi_wp_native_chat_timeout' name='cmi_wp_native_chat_plugin_options[chat_timeout]' type='number' value='" . $timeout . "' />";
+  echo "<input id='cmi_wp_native_chat_timeout' name='cmi_wp_native_chat_plugin_options[chat_timeout]' type='number' value='" . esc_attr($timeout) . "' />";
 }
 
 
@@ -215,7 +215,7 @@ function cmi_wp_native_chat_open_msg() {
 
 
   } 
-  echo "<input id='cmi_wp_native_chat_open_msg' name='cmi_wp_native_chat_plugin_options[open_msg]' type='text' value='" . $open_msg . "' />";
+  echo "<input id='cmi_wp_native_chat_open_msg' name='cmi_wp_native_chat_plugin_options[open_msg]' type='text' value='" . esc_attr($open_msg) . "' />";
 }
 
 
@@ -230,7 +230,7 @@ function cmi_wp_native_chat_init_msg() {
 
 
   } 
-  echo "<input id='cmi_wp_native_chat_init_msg' name='cmi_wp_native_chat_plugin_options[init_msg]' type='text' value='" . $init_msg . "' />";
+  echo "<input id='cmi_wp_native_chat_init_msg' name='cmi_wp_native_chat_plugin_options[init_msg]' type='text' value='" . esc_attr($init_msg) . "' />";
 }
 
 
@@ -243,7 +243,7 @@ function cmi_wp_native_chat_active_msg() {
 
 
   } 
-  echo "<input id='cmi_wp_native_chat_active_msg' name='cmi_wp_native_chat_plugin_options[active_msg]' type='text' value='" . $active_msg . "' />";
+  echo "<input id='cmi_wp_native_chat_active_msg' name='cmi_wp_native_chat_plugin_options[active_msg]' type='text' value='" . esc_attr($active_msg) . "' />";
 }
 
 function cmi_wp_native_chat_timeout_msg() {
@@ -255,7 +255,7 @@ function cmi_wp_native_chat_timeout_msg() {
 
 
   } 
-  echo "<textarea id='cmi_wp_native_chat_timeout_msg' rows='4' cols='50' name='cmi_wp_native_chat_plugin_options[timeout_msg]' type='text'>". $timeout_msg . "</textarea>";
+  echo "<textarea id='cmi_wp_native_chat_timeout_msg' rows='4' cols='50' name='cmi_wp_native_chat_plugin_options[timeout_msg]' type='text'>". esc_attr($timeout_msg) . "</textarea>";
 }
 
 function cmi_wp_native_chat_ask_email() {
@@ -265,7 +265,7 @@ function cmi_wp_native_chat_ask_email() {
   if ( isset($options['ask_email']) ) {
     if ( $options['ask_email'] != '' ) { $ask_email =  'checked'; }
   } 
-  echo "<input id='cmi_wp_native_chat_ask_email' name='cmi_wp_native_chat_plugin_options[ask_email]' type='checkbox' " . $ask_email . " />";
+  echo "<input id='cmi_wp_native_chat_ask_email' name='cmi_wp_native_chat_plugin_options[ask_email]' type='checkbox' " . esc_attr($ask_email) . " />";
 }
 
 function cmi_wp_native_chat_heading_color() {
@@ -278,7 +278,7 @@ function cmi_wp_native_chat_heading_color() {
 
 
   } 
-  echo "<input id='cmi_wp_native_chat_heading_color' name='cmi_wp_native_chat_plugin_options[heading_color]' type='color' value='" . $heading_color . "' />";
+  echo "<input id='cmi_wp_native_chat_heading_color' name='cmi_wp_native_chat_plugin_options[heading_color]' type='color' value='" . esc_attr($heading_color) . "' />";
 }
 
 
@@ -292,7 +292,7 @@ function cmi_wp_native_chat_heading_font() {
 
 
   } 
-  echo "<input id='cmi_wp_native_chat_heading_font' name='cmi_wp_native_chat_plugin_options[heading_font]' type='text' value='" . $heading_font . "' />";
+  echo "<input id='cmi_wp_native_chat_heading_font' name='cmi_wp_native_chat_plugin_options[heading_font]' type='text' value='" . esc_attr($heading_font) . "' />";
 }
 
 
@@ -307,7 +307,7 @@ function cmi_wp_native_chat_heading_size() {
 
 
   } 
-  echo "<input id='cmi_wp_native_chat_heading_size' name='cmi_wp_native_chat_plugin_options[heading_size]' type='text' value='" . $heading_size . "' />";
+  echo "<input id='cmi_wp_native_chat_heading_size' name='cmi_wp_native_chat_plugin_options[heading_size]' type='text' value='" . esc_attr($heading_size) . "' />";
 }
 
 
@@ -322,7 +322,7 @@ function cmi_wp_native_chat_msg_font() {
 
 
   } 
-  echo "<input id='cmi_wp_native_chat_msg_font' name='cmi_wp_native_chat_plugin_options[msg_font]' type='text' value='" . $msg_font . "' />";
+  echo "<input id='cmi_wp_native_chat_msg_font' name='cmi_wp_native_chat_plugin_options[msg_font]' type='text' value='" . esc_attr($msg_font) . "' />";
 }
 
 
@@ -336,7 +336,7 @@ function cmi_wp_native_chat_admin_msg_bg() {
 
 
   } 
-  echo "<input id='cmi_wp_native_chat_admin_msg_bg' name='cmi_wp_native_chat_plugin_options[admin_msg_bg]' type='color' value='" . $admin_msg_bg . "' />";
+  echo "<input id='cmi_wp_native_chat_admin_msg_bg' name='cmi_wp_native_chat_plugin_options[admin_msg_bg]' type='color' value='" . esc_attr($admin_msg_bg) . "' />";
 }
 
 
@@ -349,7 +349,7 @@ function cmi_wp_native_chat_admin_msg_color() {
 
 
   } 
-  echo "<input id='cmi_wp_native_chat_admin_msg_color' name='cmi_wp_native_chat_plugin_options[admin_msg_color]' type='color' value='" . $admin_msg_color . "' />";
+  echo "<input id='cmi_wp_native_chat_admin_msg_color' name='cmi_wp_native_chat_plugin_options[admin_msg_color]' type='color' value='" . esc_attr($admin_msg_color) . "' />";
 }
 
 
@@ -362,7 +362,7 @@ function cmi_wp_native_chat_user_msg_bg() {
 
 
   } 
-  echo "<input id='cmi_wp_native_chat_user_msg_bg' name='cmi_wp_native_chat_plugin_options[user_msg_bg]' type='color' value='" . $user_msg_bg . "' />";
+  echo "<input id='cmi_wp_native_chat_user_msg_bg' name='cmi_wp_native_chat_plugin_options[user_msg_bg]' type='color' value='" . esc_attr($user_msg_bg) . "' />";
 }
 
 
@@ -375,7 +375,7 @@ function cmi_wp_native_chat_user_msg_color() {
 
 
   } 
-  echo "<input id='cmi_wp_native_chat_user_msg_color' name='cmi_wp_native_chat_plugin_options[user_msg_color]' type='color' value='" . $user_msg_color . "' />";
+  echo "<input id='cmi_wp_native_chat_user_msg_color' name='cmi_wp_native_chat_plugin_options[user_msg_color]' type='color' value='" . esc_attr($user_msg_color) . "' />";
 }
 
 
@@ -389,7 +389,7 @@ function cmi_wp_native_chat_button_bg() {
 
 
   } 
-  echo "<input id='cmi_wp_native_chat_button_bg' name='cmi_wp_native_chat_plugin_options[button_bg]' type='color' value='" . $button_bg . "' />";
+  echo "<input id='cmi_wp_native_chat_button_bg' name='cmi_wp_native_chat_plugin_options[button_bg]' type='color' value='" . esc_attr($button_bg) . "' />";
 }
 
 
@@ -402,7 +402,7 @@ function cmi_wp_native_chat_button_font() {
 
 
   } 
-  echo "<input id='cmi_wp_native_chat_button_font' name='cmi_wp_native_chat_plugin_options[button_font]' type='text' value='" . $button_font . "' />";
+  echo "<input id='cmi_wp_native_chat_button_font' name='cmi_wp_native_chat_plugin_options[button_font]' type='text' value='" . esc_attr($button_font) . "' />";
 }
 
 function cmi_wp_native_chat_button_border() {
@@ -414,7 +414,7 @@ function cmi_wp_native_chat_button_border() {
 
 
   } 
-  echo "<input id='cmi_wp_native_chat_button_border' name='cmi_wp_native_chat_plugin_options[button_border]' type='text' value='" . $button_border . "' />";
+  echo "<input id='cmi_wp_native_chat_button_border' name='cmi_wp_native_chat_plugin_options[button_border]' type='text' value='" . esc_attr($button_border) . "' />";
 }
 
 
@@ -428,7 +428,7 @@ function cmi_wp_native_chat_button_border_radius() {
 
 
   } 
-  echo "<input id='cmi_wp_native_chat_button_border_radius' name='cmi_wp_native_chat_plugin_options[button_border_radius]' type='text' value='" . $button_border_radius . "' />";
+  echo "<input id='cmi_wp_native_chat_button_border_radius' name='cmi_wp_native_chat_plugin_options[button_border_radius]' type='text' value='" . esc_attr($button_border_radius) . "' />";
 }
 
 
@@ -441,7 +441,7 @@ function cmi_wp_native_chat_button_border_color() {
 
 
   } 
-  echo "<input id='cmi_wp_native_chat_button_border_color' name='cmi_wp_native_chat_plugin_options[button_border_color]' type='color' value='" . $button_border_color . "' />";
+  echo "<input id='cmi_wp_native_chat_button_border_color' name='cmi_wp_native_chat_plugin_options[button_border_color]' type='color' value='" . esc_attr($button_border_color) . "' />";
 }
 
 
@@ -454,7 +454,7 @@ function cmi_wp_native_chat_button_transition() {
 
 
   } 
-  echo "<input id='cmi_wp_native_chat_button_transition' name='cmi_wp_native_chat_plugin_options[button_transition]' type='text' value='" . $button_transition . "' />";
+  echo "<input id='cmi_wp_native_chat_button_transition' name='cmi_wp_native_chat_plugin_options[button_transition]' type='text' value='" . esc_attr($button_transition) . "' />";
 }
 
 
@@ -467,7 +467,7 @@ function cmi_wp_native_chat_button_transform() {
 
 
   } 
-  echo "<input id='cmi_wp_native_chat_button_transform' name='cmi_wp_native_chat_plugin_options[button_transform]' type='text' value='" . $button_transform . "' />";
+  echo "<input id='cmi_wp_native_chat_button_transform' name='cmi_wp_native_chat_plugin_options[button_transform]' type='text' value='" . esc_attr($button_transform) . "' />";
 }
 
 
@@ -480,7 +480,7 @@ function cmi_wp_native_chat_button_txt_color() {
 
 
   } 
-  echo "<input id='cmi_wp_native_chat_button_txt_color' name='cmi_wp_native_chat_plugin_options[button_txt_color]' type='color' value='" . $button_txt_color . "' />";
+  echo "<input id='cmi_wp_native_chat_button_txt_color' name='cmi_wp_native_chat_plugin_options[button_txt_color]' type='color' value='" . esc_attr($button_txt_color) . "' />";
 }
 
 
@@ -493,7 +493,7 @@ function cmi_wp_native_chat_button_txt_color_hover() {
 
 
   } 
-  echo "<input id='cmi_wp_native_chat_button_txt_color_hover' name='cmi_wp_native_chat_plugin_options[button_txt_color_hover]' type='color' value='" . $button_txt_color_hover . "' />";
+  echo "<input id='cmi_wp_native_chat_button_txt_color_hover' name='cmi_wp_native_chat_plugin_options[button_txt_color_hover]' type='color' value='" . esc_attr($button_txt_color_hover) . "' />";
 }
 
 
@@ -506,7 +506,7 @@ function cmi_wp_native_chat_button_border_color_hover() {
 
 
   } 
-  echo "<input id='cmi_wp_native_chat_button_border_color_hover' name='cmi_wp_native_chat_plugin_options[button_border_color_hover]' type='color' value='" . $button_border_color_hover . "' />";
+  echo "<input id='cmi_wp_native_chat_button_border_color_hover' name='cmi_wp_native_chat_plugin_options[button_border_color_hover]' type='color' value='" . esc_attr($button_border_color_hover) . "' />";
 }
 
 
@@ -519,7 +519,7 @@ function cmi_wp_native_chat_button_bg_color_hover() {
 
 
   } 
-  echo "<input id='cmi_wp_native_chat_button_bg_color_hover' name='cmi_wp_native_chat_plugin_options[button_bg_color_hover]' type='color' value='" . $button_bg_color_hover . "' />";
+  echo "<input id='cmi_wp_native_chat_button_bg_color_hover' name='cmi_wp_native_chat_plugin_options[button_bg_color_hover]' type='color' value='" . esc_attr($button_bg_color_hover) . "' />";
 }
 
 function cmi_wp_native_chat_validate_network_input($net)
@@ -559,7 +559,7 @@ function cmi_wp_native_chat_primary_phone() {
   	}
 
   } 
-  echo "<input ".$readonly." id='cmi_wp_native_chat_primary_phone' name='cmi_wp_native_chat_plugin_options[primary_phone]' type='tel' value='" . $primary_phone . "' />".$primary_phone_button;
+  echo "<input ".$readonly." id='cmi_wp_native_chat_primary_phone' name='cmi_wp_native_chat_plugin_options[primary_phone]' type='tel' value='" . esc_attr($primary_phone) . "' />".wp_kses_post($primary_phone_button);
 }
 
 
@@ -571,7 +571,7 @@ function cmi_wp_native_chat_primary_email() {
   $options = get_option( 'cmi_wp_native_chat_plugin_options' );
 
    if (isset($_GET['email']) ) {
-   	$primary_email = $_GET['email'];
+   	$primary_email = sanitize_email($_GET['email']);
 		$readonly = 'readonly'; 
 		$primary_email_button = "<button disabled id='cmi-wp-native-chat-change-email-button'>Verified Please Save</button>";
    }
@@ -585,7 +585,7 @@ function cmi_wp_native_chat_primary_email() {
   	}
 
   }
-  echo "<input ".$readonly." id='cmi_wp_native_chat_primary_email' name='cmi_wp_native_chat_plugin_options[primary_email]' type='text' value='" . $primary_email . "' />".$primary_email_button;
+  echo "<input ".$readonly." id='cmi_wp_native_chat_primary_email' name='cmi_wp_native_chat_plugin_options[primary_email]' type='text' value='" . esc_attr($primary_email) . "' />".wp_kses_post($primary_email_button);
 }
 
 
@@ -599,7 +599,7 @@ function cmi_wp_native_chat_verified_email () {
 		if ($options['email_verified'] == 'verified') { $verified = 'verified'; }
 	}
 
-	echo "<input id='cmi_wp_native_chat_primary_email_verification' name='cmi_wp_native_chat_plugin_options[email_verified]' type='hidden' value='".$verified."' />";
+	echo "<input id='cmi_wp_native_chat_primary_email_verification' name='cmi_wp_native_chat_plugin_options[email_verified]' type='hidden' value='".esc_attr($verified)."' />";
 }
 
 
@@ -614,7 +614,7 @@ function cmi_wp_native_chat_verified_phone () {
 		if ($options['phone_verified'] == 'verified') { $verified = 'verified'; }
 	}
 
-	echo "<input id='cmi_wp_native_chat_primary_phone_verification' name='cmi_wp_native_chat_plugin_options[phone_verified]' type='hidden' value='".$verified."' />";
+	echo "<input id='cmi_wp_native_chat_primary_phone_verification' name='cmi_wp_native_chat_plugin_options[phone_verified]' type='hidden' value='".esc_attr($verified)."' />";
 }
 
 
