@@ -10,10 +10,10 @@
  *
  * @link              jeremydownes.com
  * @since             1.0.0
- * @package           Cmi_Wp_Native_Chat
+ * @package           Wp_Native_Chat
  *
  * @wordpress-plugin
- * Plugin Name:       CMI WP Native Chat
+ * Plugin Name:       WP Native Chat
  * Plugin URI:        celsiusmarketing.com
  * Description:       Wordpress Native Chat Solution by Celsius Marketing | Interactive
  * Version:           1.0.0
@@ -21,7 +21,7 @@
  * Author URI:        jeremydownes.com
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain:       cmi-wp-native-chat
+ * Text Domain:       wp-native-chat
  * Domain Path:       /languages
  */
 
