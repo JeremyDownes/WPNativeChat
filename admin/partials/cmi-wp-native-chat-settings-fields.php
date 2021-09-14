@@ -530,7 +530,7 @@ function cmi_wp_native_chat_primary_phone() {
   $options = get_option( 'cmi_wp_native_chat_plugin_options' );
 
   if (isset($_GET['network'])) {
-  	$primary_phone = $_GET['network'];
+  	$primary_phone = sanitize_key($_GET['network']);
   	$readonly = 'readonly'; 
   	$primary_phone_button = "<button id='cmi-wp-native-chat-change-phone-button'>Verified Please Save</button>";
 	}

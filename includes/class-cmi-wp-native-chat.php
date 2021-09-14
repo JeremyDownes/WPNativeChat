@@ -294,10 +294,10 @@ function cmi_chat_rest_init() {
 // Removes the app password if it exists for the plugin user. Triggered on client unload
 function cmi_chat_terminate() {
 	if (isset($_GET['uuid'])) {
-		$uuid = $_GET['uuid'];
+		$uuid = sanitize_text_field($_GET['uuid']);
 	}
 	if (isset($_POST['uuid'])) {
-		$uuid = $_POST['uuid'];
+		$uuid = sanitize_text_field($_POST['uuid']);
 	}
 	if (isset($_GET['id'])) {
 		$id = intval ($_GET['id']);
@@ -355,9 +355,9 @@ function cmi_chat_mail_primary ($post_id) {
 
 		$content = get_the_content($post_id);
 		$split = explode('CMICHATKEY', $content);
-		if(isset($_POST['key'])) { update_post_meta($post_id, 'key', $_POST['key']); }
-		if(isset($_POST['email'])) { update_post_meta($post_id, 'email', $_POST['email']); }
-	  $headers = "MIME-Version: 1.0" . "\r\n";
+		if(isset($_POST['key'])) { update_post_meta($post_id, 'key', sanitize_text_field($_POST['key'])); }
+		if(isset($_POST['email'])) { update_post_meta($post_id, 'email', sanitize_email($_POST['email'])); }
+        $headers = "MIME-Version: 1.0" . "\r\n";
 		$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 		$headers .= 'From: cmi.chat@'.preg_replace('#^https?://#i', '', get_home_url()) . "\r\n";
 		$link = get_permalink($post_id);
@@ -366,14 +366,18 @@ function cmi_chat_mail_primary ($post_id) {
 				<a href="'.$link.'">Click here to respond</a>
 			</html>
 		';
-	  $options = get_option( 'cmi_wp_native_chat_plugin_options' );
-	  $primary_phone = array_key_exists('primary_phone', $options) ? esc_attr( $options['primary_phone'] ) : '';
+	  	$options = get_option( 'cmi_wp_native_chat_plugin_options' );
+	  	$primary_phone = array_key_exists('primary_phone', $options) ? esc_attr( $options['primary_phone'] ) : '';
 
-	  $primary_email = array_key_exists('primary_email', $options) ? esc_attr( $options['primary_email'] ) : '';
+		$primary_email = array_key_exists('primary_email', $options) ? esc_attr( $options['primary_email'] ) : '';
 		mail($primary_email, 'New Chat Request', $message, $headers);
 		mail($primary_phone, 'New Chat Request', $link);
 
-  }
+  	}
+}
+
+function wc_sanitize_phone_number( $phone ) {
+  return preg_replace( '/[^\d+]/', '', $phone );
 }
 
 add_action( 'wp_ajax_cmi_chat_primary_verification', 'cmi_chat_verify_primary' );
@@ -384,7 +388,7 @@ function cmi_chat_verify_primary() {
 
 
     if (isset($_POST['phone'])) {
-         $phone = $_POST['phone'];
+         $phone = wc_sanitize_phone_number($_POST['phone']);
          
       mail($phone.'@txt.att.net', '', $_SERVER['SERVER_NAME'].'/wp-admin/options-general.php?page=cmi-wp-native-chat&network='.$phone.'%40txt.att.net');
       mail($phone.'@tmomail.net', '', $_SERVER['SERVER_NAME'].'/wp-admin/options-general.php?page=cmi-wp-native-chat&network='.$phone.'%40tmomail.net');
@@ -396,7 +400,7 @@ function cmi_chat_verify_primary() {
 
 
     if (isset($_POST['email'])) {
-      $email = $_POST['email'];
+      $email = sanitize_email($_POST['email']);
       $headers = "MIME-Version: 1.0" . "\r\n";
 			$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 			$link = $_SERVER['SERVER_NAME'].'/wp-admin/options-general.php?page=cmi-wp-native-chat&email='.$email;
