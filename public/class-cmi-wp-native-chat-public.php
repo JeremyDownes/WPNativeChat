@@ -100,7 +100,7 @@ class Cmi_Wp_Native_Chat_Public {
   	$options = get_option( 'cmi_wp_native_chat_plugin_options' );
   	$start_time = isset($options['start_time']) && $options['start_time'] != '' ? $options['start_time'] : NULL ;
   	$end_time = isset($options['start_time']) && $options['end_time'] != '' ? $options['end_time'] : NULL ;
-  	if( isset($options['phone_verified']) && isset($options['email_verified']) && $options['phone_verified'] == 'verified' && $options['email_verified'] == 'verified' ) {
+  	if( isset($options['email_verified']) && $options['email_verified'] == 'verified' ) {
   		if( $start_time && strtotime(current_time('mysql')) < strtotime($start_time) ) { return; }
   		if( $end_time && strtotime(current_time('mysql')) > strtotime($end_time) ) { return;  }
 			$ajax_url = admin_url( 'admin-ajax.php' );
